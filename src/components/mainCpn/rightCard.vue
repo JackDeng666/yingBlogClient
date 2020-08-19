@@ -171,6 +171,14 @@ export default {
 .right-card-tab>div{
   border: 1px solid #e1e1e1;
 }
+.tab-content{
+  max-height: 200px;
+  overflow-y: scroll;
+}
+.tab-content::-webkit-scrollbar {
+  /* width: 4px; */
+  display: none;
+}
 /* 站点统计信息 */
 .site-info{
   margin-top: 10px;
