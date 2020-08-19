@@ -54,6 +54,7 @@
     <div v-show="activeTab===3" class="edit-avatar-box">
       <el-upload 
         class="avatar-uploader"
+        :headers="headers"
         :action="upUrl + 'resource/uploadUserAvatar'"
         :data="userInfo"
         name="avatarImg"
@@ -82,6 +83,9 @@ export default {
   data() {
     return {
       activeTab:1,
+      headers: {
+        authorization: localStorage.getItem('jdtoken')
+      },
       upUrl: UP_URL,
       isUploaded: false,
       newUserInfo:{}
@@ -101,9 +105,7 @@ export default {
           sex: this.newUserInfo.sex,
           userId: this.newUserInfo.id
         }
-        console.log(data)
         let res = await User.updateUserInfo(data)
-        console.log(res)
         let result = await User.getUserInfo({getBy: this.userInfo.email})
         this.addUser(result.data.data.userInfo)
         this.isEdit = false
@@ -131,8 +133,13 @@ export default {
     },
     // 上传头像的时候直接提交一次用户信息
     handleUploadSuccess(res, file) {
-      this.newUserInfo.avatar = res.url
-      this.update()
+      console.log(res)
+      if(res.meta.status == 1){
+        this.newUserInfo.avatar = res.url
+        this.update()
+      } else {
+        this.$message.error(res.meta.msg)
+      }
     }
   },
   computed: {
