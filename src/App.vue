@@ -35,10 +35,16 @@ import { mapMutations, mapState } from 'vuex'
 import canvasUtil from './utils/canvasObject/CanvasUtil'
 
 import rightCard from '@/components/mainCpn/rightCard'
-const myNavigation = () => import('@/components/mainCpn/myNavigation')
-const myBanner = () => import('@/components/mainCpn/myBanner')
-const myFooter = () => import('@/components/mainCpn/myFooter')
-const scroll = () => import('@/components/mainCpn/scroll')
+import myNavigation from '@/components/mainCpn/myNavigation'
+import myBanner from '@/components/mainCpn/myBanner'
+import myFooter from '@/components/mainCpn/myFooter'
+import scroll from '@/components/mainCpn/scroll'
+
+// const rightCard = () => import('@/components/mainCpn/rightCard')
+// const myNavigation = () => import('@/components/mainCpn/myNavigation')
+// const myBanner = () => import('@/components/mainCpn/myBanner')
+// const myFooter = () => import('@/components/mainCpn/myFooter')
+// const scroll = () => import('@/components/mainCpn/scroll')
 
 export default {
   name: "App",

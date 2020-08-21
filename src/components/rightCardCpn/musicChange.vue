@@ -32,6 +32,9 @@ export default {
   async created(){
     let res = await Song.getSongList()
     this.songList = res.data.data.songList
+    console.log(this.songList[0].song_list_id)
+    this.changeMusicId(this.songList[0].song_list_id)
+    this.reMusic()
   }
 }
 </script>

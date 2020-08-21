@@ -6,10 +6,10 @@
     <!-- 导航栏 -->
     <ul :class="drawerIsOpen?'nav mobile-nav-show':'nav'">
       <i class="fa fa-times hide-menu-btn" @click="drawerIsOpen=!drawerIsOpen"></i>
-      <li :class="activeId==0?'active':''" @click="changeActive(0)"><a href="#/home"><i class="fa fa-wa fa-home"></i> 首页</a></li>
-      <li :class="activeId==1?'active':''" @click="changeActive(1)"><a href="#/bloglist"><i class="fa fa-wa fa-archive"></i> 博客列表</a></li>
-      <li :class="activeId==2?'active':''" @click="changeActive(2)"><a href="#/messageboard"><i class="fa fa-wa fa-envelope"></i> 留言板</a></li>
-      <li :class="activeId==3?'active':''" @click="changeActive(3)"><a href="#/aboutme"><i class="fa fa-wa fa-vcard"></i> 关于我</a></li>
+      <li :class="activeId==0?'active':''" @click="changeActive(0)"><router-link to="/home"><i class="fa fa-wa fa-home"></i>首页</router-link></li>
+      <li :class="activeId==1?'active':''" @click="changeActive(1)"><router-link to="/bloglist"><i class="fa fa-wa fa-archive"></i>博客列表</router-link></li>
+      <li :class="activeId==2?'active':''" @click="changeActive(2)"><router-link to="/messageboard"><i class="fa fa-wa fa-envelope"></i>留言板</router-link></li>
+      <li :class="activeId==3?'active':''" @click="changeActive(3)"><router-link to="/aboutme"><i class="fa fa-wa fa-vcard"></i>关于我</router-link></li>
     </ul>
     <!-- 移动端导航按钮 -->
     <i class="el-icon-menu btn-mobile" @click="drawerIsOpen=!drawerIsOpen"></i>
