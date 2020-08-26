@@ -70,8 +70,6 @@ export default {
   async created() {
     let res = await Comment.getCommentListByBlogId({blogId: this.$route.query.blogId})
     this.commentList = this.changeCommentData(res.data.data.commentList)
-    console.log(res)
-    console.log(this.commentList)
   }
 }
 </script>

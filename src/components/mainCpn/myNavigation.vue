@@ -17,7 +17,8 @@
     <div class="user-info">
       <!-- 没登陆 -->
       <div v-if="!hasLogin" class="nologin">
-        <a href="#/logorsign?status=0">登录</a>&nbsp;<a href="#/logorsign?status=1">注册</a>
+        <router-link to="/logorsign?status=0">登录</router-link>
+        &nbsp;<router-link to="/logorsign?status=1">注册</router-link>
       </div>
       <!-- 登录后 -->
       <div v-if="hasLogin" class="haslogin">

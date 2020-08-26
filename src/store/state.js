@@ -27,7 +27,7 @@ export default {
   // 动态数据
   hasLogin: 0,  
   userInfo: {}, 
-  musicId: null,  
+  songListInfo: null,  
   isShowNav: 1, 
   canSend: true,
   siteInfo: {}

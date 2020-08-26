@@ -1,6 +1,6 @@
 <template>
 <div class="music-box">
-  <div v-for="(item,i) in songList" :key="i" @click="changeMusic(item.song_list_id,i)">
+  <div v-for="(item,i) in songList" :key="i" @click="changeMusic(i)">
     <waterButton :buttonName="item.song_list_name" :isActive="currentSongList==i"></waterButton>
   </div>
 </div>
@@ -22,18 +22,17 @@ export default {
   },
   inject: ['reMusic'],
   methods:{
-    changeMusic(musicId,active){
-      this.currentSongList = active
-      this.changeMusicId(musicId)
+    changeMusic(i){
+      this.currentSongList = i
+      this.changeSongListInfo(this.songList[i])
       this.reMusic()
     },
-    ...mapMutations(['changeMusicId'])
+    ...mapMutations(['changeSongListInfo'])
   },
   async created(){
     let res = await Song.getSongList()
     this.songList = res.data.data.songList
-    console.log(this.songList[0].song_list_id)
-    this.changeMusicId(this.songList[0].song_list_id)
+    this.changeSongListInfo(this.songList[0])
     this.reMusic()
   }
 }

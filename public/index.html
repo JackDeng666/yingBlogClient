@@ -7,6 +7,55 @@
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta name="renderer" content="webkit">
     <title>嘤之博客</title>
+    <style>
+      #app{
+        height: 100vh;
+      }
+      /* 全局加载 */
+      #base_load {
+        width: 50%;
+        height: 50%;
+        position: relative;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%,-50%);
+      }
+      #base_load div{
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 11%;
+        background-color: #ccc;
+        animation: baseLoad .8s 0s infinite;
+      }
+      #base_load div:nth-child(2){
+        left: 22%;
+        animation: baseLoad .8s .2s infinite;
+      }
+      #base_load div:nth-child(3){
+        left: 44%;
+        animation: baseLoad .8s .4s infinite;
+      }
+      #base_load div:nth-child(4){
+        left: 66%;
+        animation: baseLoad .8s .6s infinite;
+      }
+      #base_load div:nth-child(5){
+        left: 88%;
+        animation: baseLoad .8s .8s infinite;
+      }
+      @keyframes baseLoad {
+        0%{
+          height: 0%;
+        }
+        50%{
+          height: 100%;
+        }
+        100%{
+          height: 0%;
+        }
+      }
+    </style>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
     <!-- md富文本引入 依赖JQUERY-->
     <link rel="stylesheet" href="editor.md/css/editormd.preview.min.css" />
@@ -22,19 +71,16 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
     <script src="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
-    <style>
-      /* 全局加载 */
-      #app > img{
-        display: block;
-        width: 50%;
-        height: 50%;
-        margin: 0 auto;
-      }
-    </style>
   </head>
   <body>
     <div id="app">
-      <img src="./img/loading.svg">
+      <div id="base_load">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
   </body>
 </html>

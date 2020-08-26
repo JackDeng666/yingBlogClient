@@ -16,22 +16,17 @@
     </div>
     <myFooter/>
     <scroll/>
+    <!-- 全屏点击特效 -->
     <canvas id="fullScreenCanvas"/>
-    <meting-js
-      server="netease"
-      type="playlist"
-      :id="musicId"
-      fixed="true"
-      autoplay="true"
-      v-if="musicShow">
-    </meting-js>
+    <!-- 音乐播放组件 -->
+    <music-play v-if="musicShow"></music-play>
   </div>
 </template>
 
 <script>
 import { User } from "@/utils/api"
 import { addUserToken } from "@/utils/common"
-import { mapMutations, mapState } from 'vuex'
+import { mapMutations } from 'vuex'
 import canvasUtil from './utils/canvasObject/CanvasUtil'
 
 import rightCard from '@/components/mainCpn/rightCard'
@@ -39,6 +34,7 @@ import myNavigation from '@/components/mainCpn/myNavigation'
 import myBanner from '@/components/mainCpn/myBanner'
 import myFooter from '@/components/mainCpn/myFooter'
 import scroll from '@/components/mainCpn/scroll'
+const musicPlay = () => import("@/components/mainCpn/musicPlay")
 
 // const rightCard = () => import('@/components/mainCpn/rightCard')
 // const myNavigation = () => import('@/components/mainCpn/myNavigation')
@@ -51,7 +47,7 @@ export default {
   data() {
     return {
       isRouterAlive: true,
-      musicShow: true
+      musicShow: false
     }
   },
   components: {
@@ -59,7 +55,8 @@ export default {
     myBanner,
     myFooter,
     rightCard,
-    scroll
+    scroll,
+    musicPlay
   },
   provide () {
     return {
@@ -82,9 +79,6 @@ export default {
         this.musicShow = true
       })
     }
-  },
-  computed:{
-    ...mapState(['musicId'])
   },
   async created(){
     let token = localStorage.getItem('jdtoken')      //查看是否有登录的token

@@ -133,7 +133,6 @@ export default {
     },
     // 上传头像的时候直接提交一次用户信息
     handleUploadSuccess(res, file) {
-      console.log(res)
       if(res.meta.status == 1){
         this.newUserInfo.avatar = res.url
         this.update()
